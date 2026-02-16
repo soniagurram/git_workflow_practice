@@ -1,0 +1,8 @@
+terraform_lint:
+  stage: validate
+  image: ghcr.io/terraform-linters/tflint:latest
+  script:
+    # 1. Initialize tflint (installs plugins like the AWS ruleset if you have them)
+    - tflint --init
+    # 2. Run the lint with explicit chdir
+    - tflint --chdir=$TF_DIR
